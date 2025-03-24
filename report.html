@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report Worker/Employer - Aliwanag</title>
+    <style>
+      :root {
+        --primary: #4caf50;
+        --secondary: #ffd700;
+        --light: #ffffff;
+        --dark: #2e7d32;
+        --gray: #f5f5f5;
+        --text: #333333;
+        --danger: #f44336;
+        --warning: #ff9800;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--gray);
+        color: var(--text);
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: var(--primary);
+        color: var(--light);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-icon {
+        margin-right: 10px;
+        font-size: 1.8rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .nav-links a {
+        color: var(--light);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      
+      .menu-icon {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .page-header {
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .page-header h1 {
+        font-size: 2rem;
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .page-header p {
+        font-size: 1.1rem;
+        color: var(--text);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .alert {
+        padding: 1rem;
+        border-radius: 5px;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+      }
+      
+      .alert-icon {
+        margin-right: 1rem;
+        font-size: 1.5rem;
+      }
+      
+      .alert-info {
+        background-color: #e1f5fe;
+        color: #0277bd;
+        border-left: 4px solid #0277bd;
+      }
+      
+      .alert-warning {
+        background-color: #fff8e1;
+        color: #ff8f00;
+        border-left: 4px solid #ff8f00;
+      }
+      
+      .form-container {
+        background-color: var(--light);
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      
+      .form-section {
+        margin-bottom: 1.5rem;
+      }
+      
+      .form-section h2 {
+        font-size: 1.2rem;
+        color: var(--dark);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+      
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+      
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+      
+      .form-group textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+      
+      .form-group .radio-group {
+        display: flex;
+        gap: 1.5rem;
+      }
+      
+      .form-group .radio-item {
+        display: flex;
+        align-items: center;
+      }
+      
+      .form-group .radio-item input {
+        width: auto;
+        margin-right: 0.5rem;
+      }
+      
+      .severity-options {
+        display: flex;
+        gap: 1rem;
+        margin-top: 0.5rem;
+      }
+      
+      .severity-option {
+        flex: 1;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      
+      .severity-option.low {
+        color: #2e7d32;
+      }
+      
+      .severity-option.medium {
+        color: #ff8f00;
+      }
+      
+      .severity-option.high {
+        color: #c62828;
+      }
+      
+      .severity-option.selected {
+        background-color: #f5f5f5;
+        border-color: #999;
+        font-weight: 600;
+      }
+      
+      .form-actions {
+        display: flex; 
+      }

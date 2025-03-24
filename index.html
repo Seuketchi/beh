@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KasaBest - Domestic Service Jobs</title>
+    <style>
+      :root {
+        --primary: #4caf50;
+        --secondary: #ffd700;
+        --light: #ffffff;
+        --dark: #2e7d32;
+        --gray: #f5f5f5;
+        --text: #333333;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--gray);
+        color: var(--text);
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: var(--primary);
+        color: var(--light);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-icon {
+        margin-right: 10px;
+        font-size: 1.8rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .nav-links a {
+        color: var(--light);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--dark) 100%
+        );
+        color: var(--light);
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .search-container {
+        background-color: var(--light);
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .search-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .form-group {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .form-group select,
+      .form-group input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .search-btn {
+        background-color: var(--secondary);
+        color: var(--text);
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 1.5rem;
+        transition: background-color 0.3s;
+      }
+
+      .search-btn:hover {
+        background-color: #e5c100;
+      }
+
+      .services {
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .services h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: var(--dark);
+      }
+
+      .service-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background-color: var(--light);
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 300px;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-img {
+        height: 200px;
+        background-color: #e9e9e9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: var(--primary);
+      }
+
+      .card-content {
+        padding: 1.5rem;
+      }
+
+      .card-content h3 {
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+      }
+
+      .card-content p {
+        margin-bottom: 1rem;
+        color: #666;
+      }
+
+      .card-btn {
+        display: inline-block;
+        background-color: var(--primary);
+        color: var(--light);
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .card-btn:hover {
+        background-color: var(--dark);
+      }
+
+      .features {
+        background-color: var(--light);
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .features h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: var(--dark);
+      }
+
+      .feature-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .feature {
+        width: 300px;
+        background-color: var(--gray);
+        border-radius: 10px;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      .feature h3 {
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+      }
+
+      .cta {
+        background-color: var(--secondary);
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .cta h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+      }
+
+      .cta p {
+        margin-bottom: 2rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        color: var(--text);
+      }
+
+      .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .cta-btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .primary-btn {
+        background-color: var(--primary);
+        color: var(--light);
+      }
+
+      .primary-btn:hover {
+        background-color: var(--dark);
+      }
+
+      .secondary-btn {
+        background-color: var(--light);
+        color: var(--text);
+      }
+
+      .secondary-btn:hover {
+        background-color: #e9e9e9;
+      }
+
+      .footer {
+        background-color: var(--dark);
+        color: var(--light);
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+
+      .footer-links a {
+        color: var(--light);
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .search-form {
+          flex-direction: column;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .menu-icon {
+          display: block;
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo"><span class="logo-icon">⌂</span> BEH</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="worker.html">Find Work</a>
+        <a href="employer.html">Post a Job</a>
+        <a href="#">Verified Workers</a>
+        <a href="#">Sign In</a>
+        <a href="#" class="primary-btn">Register</a>
+      </div>
+      <div class="menu-icon">☰</div>
+    </nav>
+
+    <section class="hero">
+      <h1>Find Trusted Household Help</h1>
+      <p>
+        Connect with verified domestic workers or find your next job opportunity
+        as a labandera, kasambahay, or driver.
+      </p>
+
+      <div class="search-container">
+        <form class="search-form">
+          <div class="form-group">
+            <label for="service">Service Type</label>
+            <select id="service">
+              <option value="">All Services</option>
+              <option value="labandera">Labandera</option>
+              <option value="kasambahay">Kasambahay</option>
+              <option value="driver">Driver</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input
+              type="text"
+              id="location"
+              placeholder="Enter your location"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="date">Start Date</label>
+            <input type="date" id="date" />
+          </div>
+
+          <button type="submit" class="search-btn">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="services">
+      <h2>Our Services</h2>
+
+      <div class="service-cards">
+        <div class="card">
+          <div class="card-img">👚</div>
+          <div class="card-content">
+            <h3>Labandera</h3>
+            <p>
+              Find experienced laundry helpers who can wash, iron, and fold your
+              clothes with care.
+            </p>
+            <a href="#" class="card-btn">Find Labandera</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img">🏠</div>
+          <div class="card-content">
+            <h3>Kasambahay</h3>
+            <p>
+              Connect with reliable house helpers who can assist with cleaning,
+              cooking, and other household tasks.
+            </p>
+            <a href="#" class="card-btn">Find Kasambahay</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img">🚗</div>
+          <div class="card-content">
+            <h3>Driver</h3>
+            <p>
+              Hire professional drivers with clean records for your daily
+              commute, family trips, or business needs.
+            </p>
+            <a href="#" class="card-btn">Find Driver</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <h2>Why Choose Aliwanag</h2>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-icon">✓</div>
+          <h3>Verified Workers</h3>
+          <p>
+            All workers undergo background checks and verification before
+            joining our platform.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🔔</div>
+          <h3>Job Alerts</h3>
+          <p>
+            Get notified instantly when new job opportunities match your skills
+            and preferences.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">💬</div>
+          <h3>Direct Communication</h3>
+          <p>
+            Chat directly with potential employers or workers to discuss
+            requirements.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">⚠️</div>
+          <h3>Reporting System</h3>
+          <p>
+            Our robust reporting system ensures safety and accountability for
+            all users.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">⭐</div>
+          <h3>Ratings & Reviews</h3>
+          <p>
+            Make informed decisions based on authentic feedback from previous
+            employers or clients.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🔒</div>
+          <h3>Secure Payments</h3>
+          <p>
+            Optional payment protection ensures fair compensation for completed
+            work.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Ready to Get Started?</h2>
+      <p>
+        Join thousands of satisfied employers and domestic workers on our
+        platform today. Create an account to start posting jobs or finding work
+        opportunities.
+      </p>
+
+      <div class="cta-buttons">
+        <a href="#" class="cta-btn primary-btn">Post a Job</a>
+        <a href="#" class="cta-btn secondary-btn">Find Work</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="logo"><span class="logo-icon">⌂</span> Aliwanag</div>
+
+      <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">How It Works</a>
+        <a href="#">Safety & Security</a>
+        <a href="#">FAQs</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+
+      <p>&copy; 2025 Aliwanag. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

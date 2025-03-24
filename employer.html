@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employer Information - Aliwanag</title>
+    <style>
+      :root {
+        --primary: #4caf50;
+        --secondary: #ffd700;
+        --light: #ffffff;
+        --dark: #2e7d32;
+        --gray: #f5f5f5;
+        --text: #333333;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--gray);
+        color: var(--text);
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: var(--primary);
+        color: var(--light);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-icon {
+        margin-right: 10px;
+        font-size: 1.8rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .nav-links a {
+        color: var(--light);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .page-header {
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .page-header h1 {
+        font-size: 2.5rem;
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .page-header p {
+        font-size: 1.2rem;
+        color: var(--text);
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .employer-info-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .info-section {
+        background-color: var(--light);
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+
+      .info-section h2 {
+        color: var(--dark);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--secondary);
+      }
+
+      .info-section h3 {
+        color: var(--dark);
+        margin: 1.5rem 0 0.5rem;
+      }
+
+      .info-section p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .steps-section {
+        margin-bottom: 1.5rem;
+      }
+
+      .step {
+        display: flex;
+        margin-bottom: 1.5rem;
+      }
+
+      .step-number {
+        width: 40px;
+        height: 40px;
+        background-color: var(--primary);
+        color: var(--light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-right: 1rem;
+        flex-shrink: 0;
+      }
+
+      .step-content {
+        flex-grow: 1;
+      }
+
+      .step-content h4 {
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+      }
+
+      .benefits-list {
+        list-style: none;
+      }
+
+      .benefits-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.4;
+      }
+
+      .benefits-list li:before {
+        content: "✓";
+        color: var(--primary);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      .pricing-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+      }
+
+      .pricing-table th,
+      .pricing-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .pricing-table th {
+        background-color: var(--primary);
+        color: var(--light);
+      }
+
+      .pricing-table tr:nth-child(even) {
+        background-color: var(--gray);
+      }
+
+      .faq-container {
+        margin-top: 2rem;
+      }
+
+      .faq-item {
+        margin-bottom: 1rem;
+        background-color: var(--gray);
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        padding: 1rem;
+        background-color: var(--primary);
+        color: var(--light);
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .faq-answer {
+        padding: 1rem;
+        border: 1px solid #ddd;
+        border-top: none;
+        border-radius: 0 0 5px 5px;
+      }
+
+      .service-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .service-card {
+        background-color: var(--gray);
+        border-radius: 10px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .service-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+      }
+
+      .service-description {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .cta-section {
+        text-align: center;
+        margin: 3rem 0;
+        padding: 2rem;
+        background-color: var(--secondary);
+        border-radius: 10px;
+      }
+
+      .cta-section h2 {
+        color: var(--text);
+        margin-bottom: 1rem;
+      }
+
+      .cta-btn {
+        display: inline-block;
+        background-color: var(--primary);
+        color: var(--light);
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 1rem;
+        transition: background-color 0.3s;
+      }
+
+      .cta-btn:hover {
+        background-color: var(--dark);
+      }
+
+      .testimonials {
+        margin: 3rem 0;
+      }
+
+      .testimonials h2 {
+        text-align: center;
+        color: var(--dark);
+        margin-bottom: 2rem;
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .testimonial-card {
+        background-color: var(--light);
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .testimonial-author {
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .testimonial-location {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .safety-tips {
+        margin-top: 1.5rem;
+      }
+
+      .safety-tips h3 {
+        margin-bottom: 1rem;
+        color: var(--dark);
+      }
+
+      .safety-tips-list {
+        list-style: decimal;
+        padding-left: 1.5rem;
+      }
+
+      .safety-tips-list li {
+        margin-bottom: 0.8rem;
+        line-height: 1.4;
+      }
+
+      .footer {
+        background-color: var(--dark);
+        color: var(--light);
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+
+      .footer-links a {
+        color: var(--light);
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      .primary-btn {
+        background-color: var(--primary);
+        color: var(--light);
+      }
+
+      .primary-btn:hover {
+        background-color: var(--dark);
+      }
+
+      @media (max-width: 768px) {
+        .employer-info-content {
+          grid-template-columns: 1fr;
+        }
+
+        .service-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .menu-icon {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo"><span class="logo-icon">⌂</span> Aliwanag</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="worker.html">Find Work</a>
+        <a href="employer.html">Post a Job</a>
+        <a href="#">Verified Workers</a>
+        <a href="#">Sign In</a>
+        <a href="#" class="primary-btn">Register</a>
+      </div>
+      <div class="menu-icon">☰</div>
+    </nav>
+
+    <div class="container">
+      <div class="page-header">
+        <h1>Hire Qualified Domestic Workers</h1>
+        <p>
+          Find verified and skilled domestic workers to help with your household
+          needs
+        </p>
+      </div>
+
+      <div class="employer-info-content">
+        <div class="info-section">
+          <h2>How It Works</h2>
+
+          <div class="steps-section">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Create Your Account</h4>
+                <p>
+                  Register as an employer and complete your profile with
+                  relevant details about your household needs.
+                </p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Post a Job</h4>
+                <p>
+                  Create a detailed job posting specifying your requirements,
+                  schedule, and compensation.
+                </p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Review Applications</h4>
+                <p>
+                  Review profiles and applications from interested workers with
+                  verified backgrounds.
+                </p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Interview & Select</h4>
+                <p>
+                  Communicate directly with applicants to discuss details and
+                  conduct interviews.
+                </p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <h4>Hire & Manage</h4>
+                <p>
+                  Finalize the hiring process and manage the working
+                  relationship through our platform.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h2>Available Services</h2>
+          <p>
+            Our platform connects you with skilled domestic workers offering
+            various services:
+          </p>
+
+          <div class="service-cards">
+            <div class="service-card">
+              <div class="service-icon">👚</div>
+              <div class="service-title">Labandera</div>
+              <div class="service-description">
+                Professional laundry services including washing, ironing, and
+                folding clothes.
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-icon">🏠</div>
+              <div class="service-title">Kasambahay</div>
+              <div class="service-description">
+                General household help for cleaning, cooking, and other daily
+                tasks.
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-icon">🚗</div>
+              <div class="service-title">Driver</div>
+              <div class="service-description">
+                Professional drivers for personal, family, or business
+                transportation needs.
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-icon">👶</div>
+              <div class="service-title">Yaya</div>
+              <div class="service-description">
+                Childcare providers with experience in infant and child care.
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-icon">🍳</div>
+              <div class="service-title">Cook</div>
+              <div class="service-description">
+                Experienced cooks for daily meals or special occasions.
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-icon">🧹</div>
+              <div class="service-title">Cleaner</div>
+              <div class="service-description">
+                Specialized cleaning services for homes and offices.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h2>Benefits for Employers</h2>
+
+          <ul class="benefits-list">
+            <li>
+              <strong>Verified Workers</strong> - Access to pre-screened
+              domestic workers with verified backgrounds.
+            </li>
+            <li>
+              <strong>Convenient Hiring</strong> - Find the right help from the
+              comfort of your home.
+            </li>
+            <li>
+              <strong>Direct Communication</strong> - Connect directly with
+              potential workers to discuss your needs.
+            </li>
+            <li>
+              <strong>Transparent Reviews</strong> - Make informed decisions
+              based on genuine reviews from other employers.
+            </li>
+            <li>
+              <strong>Flexible Options</strong> - Hire for full-time, part-time,
+              or one-time services based on your needs.
+            </li>
+            <li>
+              <strong>Safety First</strong> - Our platform prioritizes safety
+              with verification processes and reporting systems.
+            </li>
+            <li>
+              <strong>Fair Market Rates</strong> - Access current market rates
+              to offer competitive compensation.
+            </li>
+            <li>
+              <strong>Contract Templates</strong> - Access to standard
+              employment contracts and agreements.
+            </li>
+          </ul>
+
+          <div class="safety-tips">
+            <h3>Safety & Security Tips</h3>
+            <ol class="safety-tips-list">
+              <li>
+                Always conduct interviews in safe, public locations or via video
+                calls before inviting someone to your home.
+              </li>
+              <li>
+                Verify identity documents and check references thoroughly.
+              </li>
+              <li>
+                Clearly communicate job expectations, duties, and compensation.
+              </li>
+              <li>
+                Consider a trial period before making a long-term commitment.
+              </li>
+              <li>
+                Use our reporting system immediately if you encounter any issues
+                or concerns.
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h2>Pricing Information</h2>
+          <p>
+            Our platform charges modest fees to help maintain the quality of our
+            services and ensure a safe environment for both employers and
+            workers.
+          </p>
+
+          <table class="pricing-table">
+            <tr>
+              <th>Service</th>
+              <th>Fee</th>
+              <th>Details</th>
+            </tr>
+            <tr>
+              <td>Basic Job Posting</td>
+              <td>Free</td>
+              <td>Post a job for 7 days, visible to all verified workers</td>
+            </tr>
+            <tr>
+              <td>Featured Job Posting</td>
+              <td>₱299</td>
+              <td>
+                Highlighted job posting for 14 days with priority visibility
+              </td>
+            </tr>
+            <tr>
+              <td>Premium Job Posting</td>
+              <td>₱599</td>
+              <td>30-day premium listing with candidate matching service</td>
+            </tr>
+            <tr>
+              <td>Background Check</td>
+              <td>₱499</td>
+              <td>Additional verification of candidate's background</td>
+            </tr>
+          </table>
+
+          <p>
+            All worker profiles undergo basic verification for free. Premium
+            verification services are available for enhanced security.
+          </p>
+        </div>
+
+        <div class="info-section">
+          <h2>Frequently Asked Questions</h2>
+
+          <div class="faq-container">
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How are workers verified on your platform?</span>
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  All workers on our platform undergo a basic verification
+                  process that includes ID verification, reference checks, and
+                  skills assessment. We also offer optional enhanced background
+                  checks for added security. Our verification process helps
+                  ensure that you're connecting with reliable domestic workers.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>What if I'm not satisfied with the service?</span>
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  If you're not satisfied with the service provided, we
+                  encourage open communication with the worker to resolve any
+                  issues. If problems persist, you can report concerns through
+                  our platform. For jobs booked with secure payment, we offer a
+                  satisfaction guarantee and can assist with conflict
+                  resolution.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How do I determine fair compensation?</span>
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Our platform provides current market rate information based on
+                  job type, location, and experience level. We encourage fair
+                  compensation that aligns with local standards and reflects the
+                  worker's skills and experience. You can also view the rate
+                  expectations on worker profiles to help guide your offer.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>What should I do if I have concerns about a worker?</span>
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  If you have concerns about a worker, you can use our reporting
+                  system to notify our support team. We take all reports
+                  seriously and will investigate the matter promptly. Depending
+                  on the nature of the concern, we may temporarily suspend the
+                  worker's profile while investigating. Your safety and
+                  satisfaction are our priorities.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <h2>Ready to Find Your Perfect Household Help?</h2>
+        <p>
+          Create your account today and start connecting with verified domestic
+          workers in your area.
+        </p>
+        <a href="#" class="cta-btn">Post a Job Now</a>
+      </div>
+
+      <div class="testimonials">
+        <h2>What Our Employers Say</h2>
+
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "I was struggling to find reliable help for our busy household
+              until I discovered this platform. Within a week, we found a
+              wonderful kasambahay who has been with us for over a year now. The
+              verification process gave us confidence in our choice."
+            </p>
+            <p class="testimonial-author">- Ana G.</p>
+            <p class="testimonial-location">Makati City</p>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "As working parents, finding a trustworthy yaya was our top
+              priority. The detailed profiles and verification badges helped us
+              narrow down candidates quickly. We interviewed three candidates
+              and found the perfect match for our family."
+            </p>
+            <p class="testimonial-author">- Marco and Lisa T.</p>
+            <p class="testimonial-location">Quezon City</p>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "The platform made it easy to find a part-time labandera who comes
+              weekly. The scheduling feature and direct communication have made
+              managing the arrangement simple and convenient. I appreciate the
+              transparency and reliability."
+            </p>
+            <p class="testimonial-author">- Raymond B.</p>
+            <p class="testimonial-location">Pasig City</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="logo"><span class="logo-icon">⌂</span> Aliwanag</div>
+
+      <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">How It Works</a>
+        <a href="#">Safety & Security</a>
+        <a href="#">FAQs</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+
+      <p>&copy; 2025 Aliwanag. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Simple toggle for FAQ items
+      document.querySelectorAll(".faq-question").forEach((question) => {
+        question.addEventListener("click", () => {
+          const answer = question.nextElementSibling;
+          const plusSign = question.querySelector("span:last-child");
+
+          if (answer.style.display === "block") {
+            answer.style.display = "none";
+            plusSign.textContent = "+";
+          } else {
+            answer.style.display = "block";
+            plusSign.textContent = "-";
+          }
+        });
+      });
+
+      // Initialize FAQ answers to be hidden
+      document.querySelectorAll(".faq-answer").forEach((answer) => {
+        answer.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
